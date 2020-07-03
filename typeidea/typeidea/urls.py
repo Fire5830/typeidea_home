@@ -14,8 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
+import xadmin
 # from blog.views import post_list
 # from blog.views import  post_detail
 from blog.views import IndexView, CategoryView, TagView, PostDetailView, SearchView, AuthorView
@@ -36,6 +37,7 @@ urlpatterns = [
     path('comment/', CommentView.as_view(), name='comment'),
     path('super_admin/', admin.site.urls, name='super-admin'),
     path('admin/', custom_site.urls, name='admin'),
-
+    path('xadmin/', xadmin.site.urls, name='admin'),
+    path('ueditor/', include('DjangoUeditor.urls'))
 
 ]
