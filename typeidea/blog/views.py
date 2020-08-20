@@ -5,6 +5,8 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView, ListView
 from django.core.cache import cache
 
+from silk.profiling.profiler import silk_profile
+
 
 # from comment.forms import CommentForm
 # from comment.models import Comment
@@ -13,6 +15,7 @@ from config.models import SideBar
 
 
 class CommonViewMixin:
+    @silk_profile(name='get_context_data')
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update({

@@ -45,6 +45,14 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django.conf',
     'DjangoUeditor',
+
+    'dal',
+    'dal_select2',
+
+    'ckeditor',
+    'ckeditor_uploader',
+
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -74,6 +82,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries': {  # Adding this section should work around the issue.
+                'staticfiles': 'django.templatetags.static',
+            },
         },
     },
 ]
@@ -124,3 +135,17 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'themes', THEME, "static"),
 ]
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar':  'full',
+        'height': 300,
+        'width': 800,
+        'tabSpaces': 4,
+        'extraPlugins': 'codesnippet',  # 配置代码插件
+    },
+}
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+CKEDITOR_UPLOAD_PATH = "article_images"

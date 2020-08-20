@@ -14,7 +14,7 @@ class PostInline(admin.TabularInline):
     model = Post
 
 
-@admin.register(Category,site=custom_site)
+@admin.register(Category, site=custom_site)
 class CategoryAdmin(BaseOwnerAdmin):
     inlines = [PostInline,]
     list_display = ('name', 'status', 'is_nav', 'create_time', 'post_count')
@@ -60,7 +60,7 @@ class PostAdmin(BaseOwnerAdmin):
     form = PostAdminForms
     list_display = [
         'title', 'category', 'status',
-        'create_time', 'operator', 'owner','desc'
+        'create_time', 'operator', 'owner', 'desc'
     ]
     list_display_links = []
     list_filter = [CategoryOwnerFilter]

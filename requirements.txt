@@ -1,3 +1,5 @@
+pymysql
+djangorestframework
 Django ~=3.05
 django-crispy-forms>=1.6.0
 django-import-export>=0.5.1
